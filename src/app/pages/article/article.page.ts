@@ -40,7 +40,10 @@ export class ArticlePage implements OnInit {
 //adiproduc = Article[] = [];
   cartb: Article[] = [];
   products: Article[] = [];
-  productos: Articles[] = [];
+  productos: Articles = {
+    amount: 0,
+
+  };
   comentario: Comentarios[] = [];
   idproduc: '';
   commentUser = {
@@ -50,10 +53,7 @@ export class ArticlePage implements OnInit {
 isLoading = false;
 items : Array<string>  = new Array<string>();
 @ViewChild('cart', {static: false, read: ElementRef})fab: ElementRef;
-private cartItemCount = new BehaviorSubject(0);
-private cartaItemCount = new BehaviorSubject(0);
-private cartbItemCount = new BehaviorSubject(0);
-private cartcItemCount = new BehaviorSubject(0);
+public cartItemCount = new BehaviorSubject(0);
 
   constructor( private route: ActivatedRoute,
                private articulosService: ArticulosService,
@@ -109,7 +109,7 @@ this.present();
 
   cargarpost(id:string){
   //  console.log(id);
-    this.articulosService.getArtHeadlines(id).subscribe( respuesta => {
+    this.articulosService.getArtHeadlines(id).subscribe( (respuesta: any) => {
   //    console.log(respuesta);
       this.productos = respuesta.post;
       this.dismiss();
@@ -179,7 +179,7 @@ this.present();
   }
 */
 addToCart(product) {
-//    console.log(product);
+   console.log(this.productos);
   this.cartService.addProduct(product);
   this.presentAlertagregas();
 //    this.animateCSS('tada');

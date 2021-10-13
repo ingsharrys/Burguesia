@@ -84,6 +84,7 @@ export interface Articles {
  amount?: number;
  video_url?: string;
  price?: number;
+ tienda_price?: number;
 
 //  publishedAt: string;
 }
