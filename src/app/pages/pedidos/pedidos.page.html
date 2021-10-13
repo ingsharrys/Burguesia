@@ -63,7 +63,7 @@
 
 </ion-row>
 
-  <form (ngSubmit)="pedido( fpedido )" #fLogin="ngForm" >
+  <form (ngSubmit)="pedido( fLogin )" #fLogin="ngForm" >
     <ion-row scrollX="true" class="scroll-items"
              style="margin-top: 50%;">
   <ion-grid fixed>
@@ -668,7 +668,7 @@
          </ion-col>
       </ion-row>
 
-  <form (ngSubmit)="pedido( especi )" #fRegistro="ngForm">
+  <form (ngSubmit)="pedido( fRegistro )" #fRegistro="ngForm">
       <ion-row>
 
         <ion-col size="1">
@@ -702,7 +702,6 @@
         </ion-col>
 
       <ion-col size="6" style="padding: 0;">
-  <center>
         <ion-button color="danger" type="submit"  style=" font-family: COCOGOOSELETTERPRESS TRIAL;
                     color: white;
                     border: 1px solid #fff;
@@ -711,7 +710,6 @@
             >
           HACER PEDIDO
         </ion-button>
-        </center>
      </ion-col>
 
      <ion-col size="3">

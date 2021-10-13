@@ -101,7 +101,8 @@ let varobserva = this.pedidos['especi'];
 async checkout(fpedido: NgForm) {
       // Perfom PayPal or Stripe checkout process
 
-
+  console.log(arguments)
+  return;
       let iduser = this.storage.get('token').then((result) => {
           console.log('My result', result);
           this.articulosService.getUser(result).subscribe(resp => {
