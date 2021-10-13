@@ -15,9 +15,9 @@ export class CartModalPage implements OnInit {
 
   cart: Article[] = [];
 //  User: Usuario[] = [];
-  User = { };
+  User: Usuario = { };
 
-  UpdatesUser = {
+  UpdatesUser: Usuario = {
   user_id: '',
   email: '',
   name: '',
@@ -73,7 +73,7 @@ export class CartModalPage implements OnInit {
          let validos = this.articulosService.registro( this.UpdatesUser );
 
       }else{
-        
+
          let valido = this.articulosService.cambiarDatosuser( this.UpdatesUser );
     }
   });

@@ -98,6 +98,8 @@ export interface Horas {
 }
 
 export interface Usuario {
+  user_id?: string;
+  name?: string;
   address?: string;
   addressdos?: string;
   _id?: string;
