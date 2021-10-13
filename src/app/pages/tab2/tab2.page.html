@@ -10,7 +10,7 @@
 
 
 
-<div *ngIf="cartItemCount == '0'"
+<div *ngIf="(cartItemCount | async ) == 0"
      style="width: 70px;">
 <p style="color:white;
           font-size:10pt;
@@ -108,7 +108,7 @@ bottom: 0;">
     </ion-col>
 
     <ion-col size="2">
-    <div *ngIf="cartItemCount >= '1'"
+    <div *ngIf="(cartItemCount | async) >= 1"
        style="width: 70px;">
 
     <p style="color:orange;

@@ -21,7 +21,7 @@ export class Tab2Page implements OnInit{
   horarios: any;
   mensajes: any;
 //  products = [];
-  cartItemCount: BehaviorSubject<number>;
+  cartItemCount: BehaviorSubject<number> = new BehaviorSubject(0);
   isLoading = false;
 
   constructor( private articulosService: ArticulosService,
