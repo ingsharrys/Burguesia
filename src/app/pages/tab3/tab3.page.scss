@@ -1,0 +1,22 @@
+ion-content{
+    --background: url(/assets/images/fondo.jpg) 0 0/100% 100% no-repeat;
+}
+
+ion-toolbar{
+    --background: url(/assets/images/toolbardos.jpg) 0 0/100% 100% no-repeat;
+    --border-color: #ffffff00;
+}
+
+.my-back-button {
+content: url(/assets/images/atras.png);
+width: 48px;
+}
+
+
+.button-native {
+  background: #ff000000;
+      border: 1px solid #000;
+        color: #000;
+        font-family:COCOGOOSELETTERPRESS TRIAL;
+            border-radius: 20px;
+}

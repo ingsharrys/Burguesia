@@ -1,0 +1,153 @@
+<ion-header no-border>
+  <ion-toolbar style="height: 150%;">
+    <ion-row>
+
+
+
+        <ion-col size="3" style="padding: 0;">
+
+
+
+
+
+<div *ngIf="cartItemCount == '0'"
+     style="width: 70px;">
+<p style="color:white;
+          font-size:10pt;
+          text-align:center;"
+
+         >
+          {{ cartItemCount | async }}
+    <ion-icon name="cart"
+              style="width: 30px;
+                     height: 30px;">
+    </ion-icon>
+
+</p>
+
+</div>
+
+
+  </ion-col>
+
+
+
+     <ion-col size="7" style="padding: 0;">
+
+    </ion-col>
+
+    <ion-col size="2" style="padding: 0;">
+
+    </ion-col>
+
+  </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="recargar($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+<ion-grid fixed style="padding: 0;">
+
+  <ion-row style="background: url(/assets/images/fondonegrohome.png) 0 0/100% 100% no-repeat;">
+
+
+  <ion-col size="2">
+    </ion-col>
+    <ion-col size="8">
+    <img src="/assets/images/logohome.png" style="width: 100%;">
+  </ion-col>
+<ion-col size="2">
+  </ion-col>
+
+
+  </ion-row>
+  <ion-row style="margin-top:10%;">
+  </ion-row>
+<ion-row *ngFor="let post of categorias"
+          style="margin-top:2%;">
+
+
+<ion-col size="2">
+</ion-col>
+  <ion-col size="8">
+
+
+       <p style=" font-size: 13pt;
+                  color: white;
+                  background:#000;
+                  padding:5px;
+                  text-align: center;
+                  font-family: 'COCOGOOSELETTERPRESS TRIAL';
+                  margin-top: 1%;
+                  border-radius: 20px;"
+            routerLink="/productos/{{post.cid}}">
+       {{post.category_name}}
+      <p>
+
+
+  </ion-col>
+  <ion-col size="2">
+  </ion-col>
+
+  </ion-row>
+
+
+  <ion-row style="background: url(/assets/images/fondonegrohomedos.png) 0 0/100% 100% no-repeat;
+  position: absolute;
+width: 100%;
+bottom: 0;">
+
+    <ion-col size="2">
+    </ion-col>
+
+    <ion-col size="2">
+    <div *ngIf="cartItemCount >= '1'"
+       style="width: 70px;">
+
+    <p style="color:orange;
+            font-size:10pt;
+            text-align:center;"
+            routerLink="/pedidos/">
+           <strong style="background: red;
+                          color: white;
+                          position: absolute;
+                          padding-right: 3px;
+                          margin-left: -8px;
+                          z-index: 50;
+                          padding-left: 3px;
+                          border-radius: 15px;
+                          font-weight: 600;">
+            {{ cartItemCount | async }}
+           </strong>
+      <ion-icon name="cart"
+                style="width: 45px;
+                       height: 45px;
+                       margin-top: 5px;">
+      </ion-icon>
+
+    </p>
+
+</div>
+
+  </ion-col>
+  <ion-col size="6">
+    <p style="font-family:COCOGOOSELETTERPRESS TRIAL;
+              font-size: 20pt;
+              color:orange;"
+        routerLink="/pedidos/">CARRITO</p>
+</ion-col>
+  <ion-col size="2">
+  </ion-col>
+
+  </ion-row>
+
+</ion-grid>
+
+</ion-content>

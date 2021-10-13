@@ -1,0 +1,222 @@
+<ion-header no-border>
+  <ion-toolbar style="height: 150%;">
+    <ion-buttons slot="start">
+      <ion-back-button class="my-back-button"></ion-back-button>
+    </ion-buttons>
+    <ion-row>
+
+      <ion-col size="3">
+
+      </ion-col>
+
+     <ion-col size="7" style="padding: 0;">
+
+    </ion-col>
+
+    <ion-col size="2" style="padding: 0;">
+      <img src="/assets/images/logotoolbar.png" style="width: 100%;">
+
+    </ion-col>
+
+  </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid fixed style="padding: 0;">
+
+  <ion-row>
+    <ion-col size="6" style="margin-top:10px;">
+      <img src="/assets/images/logoblanco.png" style="width: 100%;">
+    </ion-col>
+    <ion-col size="6" style="margin-top:18px;">
+
+      <div *ngIf=" parameter2 == '8'">
+        <img src="/assets/images/burger.png" style="width: 100%;">
+      </div>
+      <div *ngIf=" parameter2 == '7'">
+        <img src="/assets/images/perros.png" style="width: 100%;">
+      </div>
+
+      <div *ngIf=" parameter2 == '6'">
+        <img src="/assets/images/acompanamientos.png" style="width: 100%;">
+      </div>
+
+      <div *ngIf=" parameter2 == '5'">
+        <img src="/assets/images/bebidas.png" style="width: 100%;">
+      </div>
+
+    </ion-col>
+  </ion-row>
+
+<ion-row *ngFor="let p of products">
+  <ion-col size="12" style="margin-top:9px;">
+  </ion-col>
+<ion-row style="background:#00000012">
+<ion-col size="6" style="line-height: 1;">
+
+  <p style="
+              color: white;
+              padding-right: 20px;
+              text-align: center;
+               margin-block-start: 0em;
+               margin-block-end: 0em;
+               position: absolute;
+              bottom: 10px;
+              font-family:COCOGOOSELETTERPRESS TRIAL;"
+
+     routerLink="/article/{{p.nid}}">
+
+     <strong *ngIf=" p.news_title == 'EMPERATRIZ'"
+              style="font-size: 18pt;">
+{{p.news_title}}
+     </strong>
+
+     <strong *ngIf=" p.nid == '47'"
+              style="font-size: 18pt;">
+{{p.news_title}}
+     </strong>
+
+     <strong *ngIf=" p.nid == '41'"
+              style="font-size: 18pt;">
+{{p.news_title}}
+     </strong>
+
+      <strong *ngIf="p.nid != 41 && p.nid != 37 && p.nid != 47"
+               style="font-size: 21pt;">
+{{p.news_title}}
+      </strong>
+
+
+ <strong  [innerHTML]="p.news_description"
+     style=" font-size: 6pt;
+             color: #000;
+             font-weight: 900;
+             padding-left: 5px;
+             text-align: end;
+
+             font-family: 'Montserrat', sans-serif;
+              margin-block-start: 0em;
+              text-transform: uppercase;
+
+              margin-block-end: 0em;"
+    routerLink="/article/{{p.nid}}">
+           {{p.news_description}}
+
+</strong >
+<strong style=" font-size: 23pt;
+            color: white;
+            text-align: center;
+             margin-block-start: 0em;
+             margin-block-end: 0em;
+            font-family: 'Montserrat', sans-serif;"
+   routerLink="/article/{{p.nid}}">
+          {{p.tienda_price | currency: 'USD' : 'symbol' : '1.0-0' }}
+</strong>
+</p>
+
+
+  </ion-col>
+
+  <ion-col size="6" >
+
+    <img src="https://laburguesianeiva.com/admin/upload/{{p.news_image}}"
+         routerLink="/article/{{p.nid}}">
+
+
+     <div *ngIf=" p.nid == '5'">
+       <p style="color:white;font-size: 9pt;margin-bottom:19%">
+         <strong style="text-align:center;
+                        border: 2px dashed rgb(239, 157, 10);
+                        border-radius:20px;
+                        padding:5px"
+                  routerLink="/article/97">Pierna pernil </strong>
+         <strong style="text-align:center;
+                        border: 2px dashed rgb(239, 157, 10);
+                        border-radius:20px;
+                        margin-left:12px;
+                        padding:5px"
+                  routerLink="/article/98">Pechuga Ala</strong><p>
+       </div>
+
+
+       <div *ngIf=" p.nid == '9'">
+         <p style="color:white;font-size: 9pt;margin-bottom:19%">
+           <strong style="text-align:center;
+                          border: 2px dashed rgb(239, 157, 10);
+                          border-radius:20px;
+                          padding:5px"
+                    routerLink="/article/99">Pierna pernil </strong>
+           <strong style="text-align:center;
+                          border: 2px dashed rgb(239, 157, 10);
+                          border-radius:20px;
+                          margin-left:12px;
+                          padding:5px"
+                    routerLink="/article/100">Pechuga Ala</strong><p>
+         </div>
+
+
+         <div *ngIf=" p.nid == '8'">
+           <p style="color:white;font-size: 9pt;margin-bottom:19%">
+             <strong style="text-align:center;
+                            border: 2px dashed rgb(239, 157, 10);
+                            border-radius:20px;
+                            padding:5px"
+                      routerLink="/article/101">Pierna pernil </strong>
+             <strong style="text-align:center;
+                            border: 2px dashed rgb(239, 157, 10);
+                            border-radius:20px;
+                            margin-left:12px;
+                            padding:5px"
+                      routerLink="/article/103">Pechuga Ala</strong><p>
+           </div>
+
+
+           <div *ngIf=" p.nid == '4'">
+             <p style="color:white;font-size: 9pt;margin-bottom:19%">
+               <strong style="text-align:center;
+                              border: 2px dashed rgb(239, 157, 10);
+                              border-radius:20px;
+                              padding:5px"
+                        routerLink="/article/102">Pierna pernil </strong>
+               <strong style="text-align:center;
+                              border: 2px dashed rgb(239, 157, 10);
+                              border-radius:20px;
+                              margin-left:12px;
+                              padding:5px"
+                        routerLink="/article/104">Pechuga Ala</strong><p>
+             </div>
+
+  </ion-col>
+</ion-row>
+
+  <ion-col size="9" style="margin-top:0px;">
+  </ion-col>
+
+  <ion-col size="3"routerLink="/article/{{p.nid}}">
+
+
+
+
+  </ion-col>
+
+
+
+
+
+
+
+  <ion-col size="1">
+  </ion-col>
+
+  <ion-col size="10" style="border-top: 0px solid white;margin-top:9px;">
+  </ion-col>
+
+  <ion-col size="1">
+  </ion-col>
+
+  </ion-row>
+
+</ion-grid>
+
+</ion-content>

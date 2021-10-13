@@ -1,0 +1,32 @@
+ion-content{
+    --background: url(/assets/images/fondoarticulo.jpg) 0 0/100% 100% no-repeat;
+}
+
+ion-item{
+--background-color: #3f4041;
+}
+
+
+ion-list {
+
+--ion-background-color: transparent !important;
+
+--ion-border-color: transparent !important;
+}
+
+ion-item {
+
+--background: rgba(0, 0, 0, 0);
+
+--border-color: rgba(0, 0, 0, 0);
+}
+
+ion-toolbar{
+    --background: url(/assets/images/toolbarticulos.jpg) 0 0/100% 100% no-repeat;
+    --border-color: #ffffff00;
+}
+
+.my-back-button {
+content: url(/assets/images/atras.png);
+width: 48px;
+}

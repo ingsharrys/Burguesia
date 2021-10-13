@@ -1,0 +1,747 @@
+<ion-header no-border>
+  <ion-toolbar style="height: 110%;">
+    <ion-buttons slot="start">
+      <ion-back-button class="my-back-button"></ion-back-button>
+    </ion-buttons>
+    <ion-row>
+
+      <ion-col size="3">
+
+      </ion-col>
+
+     <ion-col size="7" style="padding: 0;">
+
+    </ion-col>
+
+    <ion-col size="2" style="padding: 0;">
+      <img src="/assets/images/logotoolbar.png" style="width: 100%;">
+
+    </ion-col>
+
+  </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row style="background: url(/assets/images/headcarrito.jpg) 0 0/100% 100% no-repeat;
+                  position: fixed;
+                  z-index: 900;">
+  <ion-col size="8">
+  <img src="/assets/images/carritopedido.png" style="width: 100%;">
+  </ion-col>
+
+  <ion-col size="1">
+
+  </ion-col>
+
+  <ion-col size="3">
+  <img src="/assets/images/logopedido.png" style="width: 80%;margin-top: 2%;">
+  </ion-col>
+
+  <ion-col size="12">
+    <p style="color:white;text-align:center;
+              margin:0;
+              font-family: 'Montserrat', sans-serif;">
+      Total pedido</p>
+    <p style="color:#000;
+              text-align:center;
+              font-family: 'Montserrat', sans-serif;
+              font-size:28pt;
+
+              margin-block-start: 0em;
+              margin-block-end: 0em;">{{ getTotal() | currency: 'USD' : 'symbol' : '1.0-0'}}</p>
+
+              <p style="color:white;text-align:center;
+                        margin-bottom:5px;
+                        font-size:8pt;
+                        margin-bottom: 5%;
+                        font-family: 'Montserrat', sans-serif;">
+                + VALOR DEL DOMICILIO</p>
+  </ion-col>
+
+
+
+</ion-row>
+
+  <form (ngSubmit)="pedido( fpedido )" #fLogin="ngForm" >
+    <ion-row scrollX="true" class="scroll-items"
+             style="margin-top: 50%;">
+  <ion-grid fixed>
+
+
+
+
+      <ion-col size="12">
+
+      </ion-col>
+
+
+
+
+    <ion-row class="ion-align-items-center"  class="ion-text-wrap" style="margin-left: 5%;">
+
+
+
+
+       <ion-col size="12"  style="border-bottom: 1px solid #ffffff38;">
+            <ion-row *ngFor="let p of cart">
+              <ion-col size="6" *ngIf="p.cat_id != 6 && p.cat_id != 5">
+
+
+                 <img src="https://laburguesianeiva.com/admin/upload/{{p.news_image}}">
+                <p style="font-size: 6vw;
+                           color: #FFC200;
+                           text-align: center;
+                           font-family: 'COCOGOOSELETTERPRESS TRIAL';
+                           margin:0;">{{ p.news_title }}</p>
+
+          <ion-row>
+              <ion-col size="4">
+                 <ion-button color="danger" fill="clear"
+
+                             style="
+                                    left: 8px;
+                                    bottom: 38px;">
+                                    <p style=" font-size: 39pt;
+                                               color: #FFC200;
+                                               text-align: center;
+                                               font-family: 'COCOGOOSELETTERPRESS TRIAL';
+                                               margin: 0;">-</p>
+                 </ion-button>
+              </ion-col>
+
+              <ion-col size="1">
+                </ion-col>
+
+              <ion-col size="3">
+                      <p style=" font-size: 6vw;
+                                 color: #FFC200;
+                                 font-weight: 900;
+                                 text-align: center;">  {{ p.amount }}
+                      </p>
+              </ion-col>
+              <ion-col size="4">
+                 <ion-button color="success" fill="clear"
+                             (click)="increaseCartItem(p)"
+                             style="margin-left: -10px;
+                                    bottom: 40px;">
+                                    <p style=" font-size: 39pt;
+                                               color: #FFC200;
+                                               text-align: center;
+                                               font-family: 'COCOGOOSELETTERPRESS TRIAL';
+                                               margin: 0;">+</p>
+                 </ion-button>
+                 </ion-col>
+
+
+
+
+             </ion-row>
+
+                 <p style="color:white;text-align:center">{{ p.amount * p.tienda_price + p.amounta * p.adicionprice0 + p.amountb * p.adicionprice1 + p.amountc * p.adicionprice2 + p.amountd * p.adicionprice3 + p.amounte * p.adicionprice4 + p.amountf * p.adicionprice5 + p.amountg * p.adicionprice6 + p.amounth * p.adicionprice7 + p.amounti * p.adicionprice8 + p.amountj * p.adicionprice9  | currency: 'USD' : 'symbol' : '1.0-0'}}</p>
+                   </ion-col>
+
+                   <ion-col size="6"
+                            *ngIf="p.cat_id != 6 && p.cat_id != 5">
+
+                     <p style="font-size: 3vw;
+                                color: #000;
+                                border-top-left-radius: 10px;
+                                border-bottom-left-radius: 10px;
+                                background: #F97C00;
+                                text-align: center;
+                                font-family: 'COCOGOOSELETTERPRESS TRIAL';
+                                margin-right: -10px;"> Adiciones
+                     </p>
+
+                     <p style="font-size: 2.7vw;
+                               margin-bottom: 1px;
+                               color: #FFC200;
+                               text-align: left;
+                               border-bottom: 1px solid #ffc2002e;
+                               font-family: 'Montserrat', sans-serif;">
+
+                                {{ p.adicion0 }}
+                                <strong style="font-size: 3.5vw;
+                                               color: #FFC200;
+                                               text-align: left;
+                                               font-family: 'Montserrat', sans-serif;
+                                               position: absolute;
+                                               right: 38px;"
+                                        *ngIf=" p.amounta >= '1'"
+                                        (click)="restas(p)"> -
+
+                                </strong>
+
+
+                                 <strong style="font-size: 2.5vw;
+                                            color: #FFC200;
+                                            font-family: 'Montserrat', sans-serif;
+                                            text-align: center;
+                                            position: absolute;
+                                            right: 25px;
+                                            margin:0;">
+                                            {{ p.amounta }}
+                                  </strong>
+
+                          <strong style="font-size: 3.5vw;
+                                         color: #FFC200;
+                                         text-align: left;
+                                         font-family: 'Montserrat', sans-serif;
+                                         position: absolute;
+                                         right: 10px;
+                                         margin:0;"
+                                   (click)="addicion(p)">   +
+
+                          </strong>
+
+                     </p>
+
+
+
+                     <p style="font-size: 2.7vw;
+                               margin-bottom: 1px;
+                               color: #FFC200;
+                               text-align: left;
+                               font-family: 'Montserrat', sans-serif;
+                               border-bottom: 1px solid #ffc2002e;">
+
+                                {{ p.adicion1 }}
+                                <strong style="font-size: 3.5vw;
+                                               color: #FFC200;
+                                               text-align: left;
+                                               font-family: 'Montserrat', sans-serif;
+                                               position: absolute;
+                                               right: 38px;"
+                                        *ngIf=" p.amountb >= '1'"
+                                        (click)="restasb(p)"> -
+
+                                </strong>
+
+
+                                 <strong style="font-size: 2.5vw;
+                                                color: #FFC200;
+                                                font-family: 'Montserrat', sans-serif;
+                                                text-align: center;
+                                                position: absolute;
+                                                right: 25px;
+                                                margin:0;">
+                                                {{ p.amountb }}
+                                  </strong>
+
+                          <strong style="font-size: 3.5vw;
+                                         color: #FFC200;
+                                         text-align: left;
+                                         font-family: 'Montserrat', sans-serif;
+                                         position: absolute;
+                                         right: 10px;
+                                         margin:0;"
+                                  (click)="addicionb(p)">   +
+
+                          </strong>
+
+                     </p>
+
+
+
+                     <p style="font-size: 2.7vw;
+                                color: #FFC200;
+                                text-align: left;
+                                font-family: 'Montserrat', sans-serif;
+                                margin-bottom: 1px;
+                                border-bottom: 1px solid #ffc2002e;">
+
+                                {{ p.adicion2 }}
+                                <strong style="font-size: 3.5vw;
+                                               color: #FFC200;
+                                               text-align: left;
+                                               font-family: 'Montserrat', sans-serif;
+                                               position: absolute;
+                                               right: 38px;"
+                                        *ngIf=" p.amountc >= '1'"
+                                        (click)="restasc(p)"> -
+
+                                </strong>
+
+
+                                 <strong style="font-size: 2.5vw;
+                                                color: #FFC200;
+                                                font-family: 'Montserrat', sans-serif;
+                                                text-align: center;
+                                                position: absolute;
+                                                right: 25px;">
+                                                {{ p.amountc }}
+                                  </strong>
+
+                          <strong style="font-size: 3.5vw;
+                                         color: #FFC200;
+                                         text-align: left;
+                                         font-family: 'Montserrat', sans-serif;
+                                         position: absolute;
+                                         right: 10px;"
+                                  (click)="addicionc(p)">   +
+
+                          </strong>
+
+                     </p>
+
+
+
+                     <p style="font-size: 2.7vw;
+                                color: #FFC200;
+                                text-align: left;
+                                font-family: 'Montserrat', sans-serif;
+                                margin-bottom: 1px;
+                                border-bottom: 1px solid #ffc2002e;">
+
+                                {{ p.adicion3 }}
+                                <strong style="font-size: 3.5vw;
+                                               color: #FFC200;
+                                               text-align: left;
+                                               font-family: 'Montserrat', sans-serif;
+                                               position: absolute;
+                                               right: 38px;"
+                                        *ngIf=" p.amountd >= '1'"
+                                        (click)="restasd(p)"> -
+
+                                </strong>
+
+
+                                 <strong style="font-size: 2.5vw;
+                                                color: #FFC200;
+                                                font-family: 'Montserrat', sans-serif;
+                                                text-align: center;
+                                                position: absolute;
+                                                right: 25px;">
+                                                {{ p.amountd }}
+                                  </strong>
+
+                          <strong style="font-size: 3.5vw;
+                                         color: #FFC200;
+                                         text-align: left;
+                                         font-family: 'Montserrat', sans-serif;
+                                         position: absolute;
+                                         right: 10px;"
+                                  (click)="addiciond(p)">   +
+
+                          </strong>
+
+                     </p>
+
+
+
+
+                     <p style="font-size: 2.7vw;
+                                color: #FFC200;
+                                text-align: left;
+                                font-family: 'Montserrat', sans-serif;
+                                margin-bottom: 1px;
+                                border-bottom: 1px solid #ffc2002e;">
+
+                                {{ p.adicion4 }}
+                                <strong style="font-size: 3.5vw;
+                                               color: #FFC200;
+                                               text-align: left;
+                                               font-family: 'Montserrat', sans-serif;
+                                               position: absolute;
+                                               right: 38px;"
+                                        *ngIf=" p.amounte >= '1'"
+                                        (click)="restase(p)"> -
+
+                                </strong>
+
+
+                                 <strong style="font-size: 2.5vw;
+                                                color: #FFC200;
+                                                font-family: 'Montserrat', sans-serif;
+                                                text-align: center;
+                                                position: absolute;
+                                                right: 25px;">
+                                                {{ p.amounte }}
+                                  </strong>
+
+                          <strong style="font-size: 3.5vw;
+                                         color: #FFC200;
+                                         text-align: left;
+                                         font-family: 'Montserrat', sans-serif;
+                                         position: absolute;
+                                         right: 10px;"
+                                  (click)="addicione(p)">   +
+
+                          </strong>
+
+                     </p>
+
+
+                     <p style="font-size: 2.7vw;
+                                color: #FFC200;
+                                text-align: left;
+                                font-family: 'Montserrat', sans-serif;
+                                margin-bottom: 1px;
+                                border-bottom: 1px solid #ffc2002e;">
+
+                                {{ p.adicion5 }}
+                                <strong style="font-size: 3.5vw;
+                                               color: #FFC200;
+                                               text-align: left;
+                                               font-family: 'Montserrat', sans-serif;
+                                               position: absolute;
+                                               right: 38px;"
+                                        *ngIf=" p.amountf >= '1'"
+                                       (click)="restasf(p)"> -
+
+                                </strong>
+
+
+                                 <strong style="font-size: 2.5vw;
+                                                color: #FFC200;
+                                                font-family: 'Montserrat', sans-serif;
+                                                text-align: center;
+                                                position: absolute;
+                                                right: 25px;">
+                                                {{ p.amountf }}
+                                  </strong>
+
+                          <strong style="font-size: 3.5vw;
+                                         color: #FFC200;
+                                         text-align: left;
+                                         font-family: 'Montserrat', sans-serif;
+                                         position: absolute;
+                                         right: 10px;"
+                                  (click)="addicionf(p)">   +
+
+                          </strong>
+
+                     </p>
+
+
+                     <p style="font-size: 2.7vw;
+                                color: #FFC200;
+                                text-align: left;
+                                font-family: 'Montserrat', sans-serif;
+                                margin-bottom: 1px;
+                                border-bottom: 1px solid #ffc2002e;">
+
+                                {{ p.adicion6 }}
+                                <strong style="font-size: 3.5vw;
+                                               color: #FFC200;
+                                               text-align: left;
+                                               font-family: 'Montserrat', sans-serif;
+                                               position: absolute;
+                                               right: 38px;"
+                                        *ngIf=" p.amountg >= '1'"
+                                       (click)="restasg(p)"> -
+
+                                </strong>
+
+
+                                 <strong style="font-size: 2.5vw;
+                                                color: #FFC200;
+                                                font-family: 'Montserrat', sans-serif;
+                                                text-align: center;
+                                                position: absolute;
+                                                right: 25px;">
+                                                {{ p.amountg }}
+                                  </strong>
+
+                          <strong style="font-size: 3.5vw;
+                                         color: #FFC200;
+                                         text-align: left;
+                                         font-family: 'Montserrat', sans-serif;
+                                         position: absolute;
+                                         right: 10px;"
+                                  (click)="addiciong(p)">   +
+
+                          </strong>
+
+                     </p>
+
+
+                     <p style="font-size: 2.7vw;
+                                color: #FFC200;
+                                text-align: left;
+                                font-family: 'Montserrat', sans-serif;
+                                margin-bottom: 1px;
+                                border-bottom: 1px solid #ffc2002e;">
+
+                                {{ p.adicion7 }}
+                                <strong style="font-size: 3.5vw;
+                                               color: #FFC200;
+                                               text-align: left;
+                                               font-family: 'Montserrat', sans-serif;
+                                               position: absolute;
+                                               right: 38px;"
+                                        *ngIf=" p.amounth >= '1'"
+                                       (click)="restash(p)"> -
+
+                                </strong>
+
+
+                                 <strong style="font-size: 2.5vw;
+                                                color: #FFC200;
+                                                font-family: 'Montserrat', sans-serif;
+                                                text-align: center;
+                                                position: absolute;
+                                                right: 25px;">
+                                                {{ p.amounth }}
+                                  </strong>
+
+                          <strong style="font-size: 3.5vw;
+                                         color: #FFC200;
+                                         text-align: left;
+                                         font-family: 'Montserrat', sans-serif;
+                                         position: absolute;
+                                         right: 10px;"
+                                  (click)="addicionh(p)">   +
+
+                          </strong>
+
+                     </p>
+
+
+                     <p style="font-size: 2.7vw;
+                                color: #FFC200;
+                                text-align: left;
+                                font-family: 'Montserrat', sans-serif;
+                                margin-bottom: 1px;
+                                border-bottom: 1px solid #ffc2002e;"
+                        *ngIf="p.cat_id != 7">
+
+                                {{ p.adicion8 }}
+                                <strong style="font-size: 3.5vw;
+                                               color: #FFC200;
+                                               text-align: left;
+                                               font-family: 'Montserrat', sans-serif;
+                                               position: absolute;
+                                               right: 38px;"
+                                        *ngIf=" p.amounti >= '1'"
+                                       (click)="restasi(p)"> -
+
+                                </strong>
+
+
+                                 <strong style="font-size: 2.5vw;
+                                                color: #FFC200;
+                                                font-family: 'Montserrat', sans-serif;
+                                                text-align: center;
+                                                position: absolute;
+                                                right: 25px;">
+                                                {{ p.amounti }}
+                                  </strong>
+
+                          <strong style="font-size: 3.5vw;
+                                         color: #FFC200;
+                                         text-align: left;
+                                         font-family: 'Montserrat', sans-serif;
+                                         position: absolute;
+                                         right: 10px;"
+
+                                  (click)="addicioni(p)">   +
+
+                          </strong>
+
+                     </p>
+
+
+
+                     <p style="font-size: 2.7vw;
+                                color: #FFC200;
+                                text-align: left;
+                                font-family: 'Montserrat', sans-serif;
+                                margin-bottom: 1px;
+                                border-bottom: 1px solid #ffc2002e;"
+                        *ngIf="p.cat_id != 7">
+
+                                {{ p.adicion9 }}
+                                <strong style="font-size: 3.5vw;
+                                               color: #FFC200;
+                                               text-align: left;
+                                               font-family: 'Montserrat', sans-serif;
+                                               position: absolute;
+                                               right: 38px;"
+                                        *ngIf=" p.amountj >= '1'"
+                                       (click)="restasj(p)"> -
+
+                                </strong>
+
+
+                                 <strong style="font-size: 2.5vw;
+                                                color: #FFC200;
+                                                font-family: 'Montserrat', sans-serif;
+                                                text-align: center;
+                                                position: absolute;
+                                                right: 25px;"
+                                          >
+                                                {{ p.amountj }}
+                                  </strong>
+
+                          <strong style="font-size: 3.5vw;
+                                         color: #FFC200;
+                                         text-align: left;
+                                         font-family: 'Montserrat', sans-serif;
+                                         position: absolute;
+                                         right: 10px;"
+                                         *ngIf="p.cat_id != 7"
+                                  (click)="addicionj(p)">   +
+
+                          </strong>
+
+                     </p>
+
+
+
+
+
+                     </ion-col>
+            </ion-row>
+
+
+            <ion-row>
+              <ion-col size="12"
+                       *ngFor="let u of cart">
+
+             <ion-row *ngIf="u.cat_id == 6 || u.cat_id == 5">
+
+               <ion-col size="6">
+                 <img src="https://laburguesianeiva.com/admin/upload/{{u.news_image}}">
+
+
+                   </ion-col>
+
+
+                   <ion-col size="6">
+
+                     <p style="font-size: 5.5vw;
+                                color: #FFC200;
+                                text-align: center;
+                                font-family: 'COCOGOOSELETTERPRESS TRIAL';
+                                margin:0;">{{ u.news_title }}</p>
+
+                     <ion-row>
+                       <ion-col size="4">
+
+                     <ion-button color="danger" fill="clear"
+                                 (click)="decreaseCartItem(u)"
+                                 style="height: 20px;
+                                        left: 8px;
+                                        bottom: 38px;">
+                                        <p style=" font-size: 20pt;
+                                                   color: #FFC200;
+                                                   text-align: center;
+                                                   font-family: 'COCOGOOSELETTERPRESS TRIAL';
+                                                   margin-top: 20px;">-</p>
+                     </ion-button>
+                     </ion-col>
+                     <ion-col size="4">
+                          <p style="
+                                    margin: 0;
+                                    height: 20px;
+                                    font-size: 9vw;
+                                    color: #FFC200;
+                                    font-weight: 900;
+                                    text-align: center;">  {{ u.amount }}
+                          </p>
+
+                          </ion-col>
+                          <ion-col size="4">
+                     <ion-button color="success" fill="clear"
+                                 (click)="increaseCartItem(u)"
+                                 style="height: 20px;
+                                        left: 90px;
+                                        bottom: 40px;">
+                                        <p style=" font-size: 20pt;
+                                                   color: #FFC200;
+                                                   text-align: center;
+                                                   font-family: 'COCOGOOSELETTERPRESS TRIAL';
+                                                   margin-top: 20px;">+</p>
+                     </ion-button>
+                     </ion-col>
+                   </ion-row>
+
+                     <p style="color:white;text-align:center; font-size:7vw;color: #fff;font-family: 'Montserrat', sans-serif;    margin-top: 0;">{{ u.amount * u.tienda_price + u.amounta * u.adicionprice0 + u.amountb * u.adicionprice1 + u.amountc * u.adicionprice2 + u.amountd * u.adicionprice3 + u.amounte * u.adicionprice4 + u.amountf * u.adicionprice5 + u.amountg * u.adicionprice6 + u.amounth * u.adicionprice7 + u.amounti * u.adicionprice8 + u.amountj * u.adicionprice9  | currency: 'USD' : 'symbol' : '1.0-0'}}</p>
+                       </ion-col>
+
+</ion-row>
+</ion-col>
+                   </ion-row>
+
+         </ion-col>
+      </ion-row>
+
+  <form (ngSubmit)="pedido( especi )" #fRegistro="ngForm">
+      <ion-row>
+
+        <ion-col size="1">
+
+        </ion-col>
+
+
+        <ion-col size="10">
+          <ion-textarea type="text"  placeholder="OBSERVACIONES"
+                        [(ngModel)]="pedidos.especi" name="especi"
+                        style="background: #141414;
+                               color: #FFC200;
+                               height: 150px;
+                               font-family: 'Montserrat', sans-serif;
+                               text-align: center;
+                               border: 1px solid #68370b;
+                               margin-bottom:5%;
+                               border-radius: 15px;
+                               padding-left: 5px;">
+
+
+          </ion-textarea>
+          </ion-col>
+
+          <ion-col size="1">
+
+            </ion-col>
+
+      <ion-col size="3">
+
+        </ion-col>
+
+      <ion-col size="6" style="padding: 0;">
+  <center>
+        <ion-button color="danger" type="submit"  style=" font-family: COCOGOOSELETTERPRESS TRIAL;
+                    color: white;
+                    border: 1px solid #fff;
+                    border-radius: 20px;
+                    padding: 10px;"
+            >
+          HACER PEDIDO
+        </ion-button>
+        </center>
+     </ion-col>
+
+     <ion-col size="3">
+
+       </ion-col>
+
+    </ion-row>
+</form>
+
+
+
+
+
+
+          </ion-grid>
+
+
+</ion-row>
+
+
+
+
+
+
+
+  </form>
+
+
+
+
+
+
+</ion-content>

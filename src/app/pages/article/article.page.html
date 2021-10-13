@@ -1,0 +1,290 @@
+<ion-header no-border>
+  <ion-toolbar style="height: 110%;">
+    <ion-buttons slot="start">
+      <ion-back-button class="my-back-button"></ion-back-button>
+    </ion-buttons>
+    <ion-row>
+
+      <ion-col size="3">
+
+      </ion-col>
+
+     <ion-col size="7" style="padding: 0;">
+
+    </ion-col>
+
+    <ion-col size="2" style="padding: 0;">
+
+        <img src="/assets/images/logotoolbar.png" style="width: 100%;">
+
+    
+
+
+    </ion-col>
+
+  </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-row style="margin:0px;
+                  background: url(/assets/images/negroarticulo.png) 0 0/100% 100% no-repeat;" >
+
+    <ion-col size="3">
+
+  </ion-col>
+
+    <ion-col size="6">
+
+      <p style="color:white;
+                font-size:15pt;
+                text-align:center;
+                font-family: 'Montserrat', sans-serif;"
+                >
+
+
+                 Cantidad
+
+      </p>
+
+      <p style="color:white;
+                font-size:15pt;
+                text-align:center;
+                font-family: 'Montserrat', sans-serif;"
+
+                >
+                <strong style="font-weight: 900;
+                          margin-block-start:7px;
+                          font-size:16pt;
+                          color:#fff;
+                          text-align:center;
+                          border: 1px solid #fff;
+                          border-radius:20px;
+                          padding-left: 8px;
+                          margin-right: 7px;
+                          padding-right: 2px;"
+                          *ngIf=" productos.amount >= '1'"
+                          (click)="menosToCart(productos)"> - </strong>
+
+{{productos.amount}}
+                <strong style="font-weight: 900;
+                          margin-block-start:7px;
+                          font-size:16pt;
+                          color:#fff;
+                          text-align:center;
+                          border: 1px solid #fff;
+                          border-radius:20px;
+                          padding-left: 6px;
+                          margin-left: 7px;
+                          padding-right: 6px;"
+                          (click)="addToCart(productos)"> + </strong>
+      </p>
+
+
+    </ion-col>
+
+    <ion-col size="3">
+
+  </ion-col>
+
+  <ion-col size="2">
+
+</ion-col>
+
+  <ion-col size="8" style="padding: 0;">
+     <img src="https://laburguesianeiva.com/admin/upload/{{productos.news_image}}">
+  </ion-col>
+
+  <ion-col size="2">
+
+</ion-col>
+<ion-col size="1">
+
+</ion-col>
+
+    <ion-col size="10">
+
+       <p style="color:#FFC200;
+                 font-size:10vw;
+                 font-family:COCOGOOSELETTERPRESS TRIAL;
+                 text-align:left;
+                 text-transform: uppercase;
+                     margin: 0;"
+          routerLink="/tab2">
+          {{productos.news_title}}</p>
+    <p [innerHTML]="productos.news_description"
+        style="line-height: 1;margin-top: -20px;font-size:13pt;color:#FFC200;
+               ">
+         {{productos.news_description}}
+    </p>
+    <img src="/assets/images/logoarticulo.png" style="width:18%;    margin-bottom: 39px;">
+    </ion-col>
+
+  <ion-col size="1" style="padding: 0;">
+
+  </ion-col>
+
+</ion-row>
+
+
+<ion-row style="margin:6px" >
+
+
+  <ion-col size="6">
+
+  </ion-col>
+
+  <ion-col size="6">
+
+    <p style="font-family: 'Montserrat', sans-serif;
+              font-size: 35pt;
+              text-align: center;
+              margin-top:-100px;
+              color:#000;
+              position: absolute;
+              right: 1px;">
+              <strong style="font-family: 'Montserrat', sans-serif;
+                             font-size: 22pt;
+                              right: 1px;
+                              margin-top: 20px;
+                              position: absolute;">...............</strong><br>
+              {{productos.tienda_price | currency: 'USD' : 'symbol' : '1.0-0'}}</p>
+ </ion-col>
+
+
+ <ion-col size="6">
+
+ </ion-col>
+
+
+ <ion-col size="6" style="padding-top: 40px;margin-bottom: 115px;">
+
+   <div>
+   <p style="font-family: 'Montserrat', sans-serif;
+             font-size: 25pt;
+             text-align: center;
+             margin:0;
+             border-top-left-radius: 10px;
+             border-bottom-left-radius: 10px;
+             background:#000;
+             padding-top: 8px;
+             margin-right: -20px;
+             color:#FFC200;">
+
+             <ion-icon name="logo-facebook" style="margin-right: 5%;"></ion-icon>
+             <ion-icon name="logo-instagram" style="margin-right: 5%;"></ion-icon>
+             <ion-icon name="logo-whatsapp"  style="margin-right: 5%;"></ion-icon></p>
+
+
+
+    </div>
+
+
+ </ion-col>
+
+
+
+
+
+  </ion-row>
+
+
+</ion-content>
+
+<ion-row style="background: url(/assets/images/fondonegrohomedos.png) 0 0/100% 100% no-repeat;
+position: absolute;
+width: 100%;
+bottom: 0;">
+
+  <ion-col size="2">
+  </ion-col>
+
+  <ion-col size="2">
+  <div *ngIf="cartItemCount >= '1'"
+     style="width: 70px;">
+
+  <p style="color:orange;
+          font-size:10pt;
+          text-align:center;"
+          routerLink="/pedidos/">
+         <strong style="background: red;
+                        color: white;
+                        position: absolute;
+                        padding-right: 3px;
+                        margin-left: -8px;
+                        z-index: 50;
+                        padding-left: 3px;
+                        border-radius: 15px;
+                        font-weight: 600;">
+          {{ cartItemCount | async }}
+         </strong>
+    <ion-icon name="cart"
+              style="width: 45px;
+                     height: 45px;
+                     margin-top: 5px;">
+    </ion-icon>
+
+  </p>
+
+</div>
+
+</ion-col>
+<ion-col size="6">
+  <p style="font-family:COCOGOOSELETTERPRESS TRIAL;
+            font-size: 20pt;
+            color:orange;"
+      routerLink="/pedidos/">CARRITO</p>
+</ion-col>
+<ion-col size="2">
+</ion-col>
+
+</ion-row><ion-row style="background: url(/assets/images/fondonegrohomedos.png) 0 0/100% 100% no-repeat;
+position: absolute;
+width: 100%;
+bottom: 0;">
+
+  <ion-col size="2">
+  </ion-col>
+
+  <ion-col size="2">
+  <div *ngIf="cartItemCount >= '1'"
+     style="width: 70px;">
+
+  <p style="color:orange;
+          font-size:10pt;
+          text-align:center;"
+          routerLink="/pedidos/">
+         <strong style="background: red;
+                        color: white;
+                        position: absolute;
+                        padding-right: 3px;
+                        margin-left: -8px;
+                        z-index: 50;
+                        padding-left: 3px;
+                        border-radius: 15px;
+                        font-weight: 600;">
+          {{ cartItemCount | async }}
+         </strong>
+    <ion-icon name="cart"
+              style="width: 45px;
+                     height: 45px;
+                     margin-top: 5px;">
+    </ion-icon>
+
+  </p>
+
+</div>
+
+</ion-col>
+<ion-col size="6">
+  <p style="font-family:COCOGOOSELETTERPRESS TRIAL;
+            font-size: 20pt;
+            color:orange;"
+      routerLink="/pedidos/">CARRITO</p>
+</ion-col>
+<ion-col size="2">
+</ion-col>
+
+</ion-row>

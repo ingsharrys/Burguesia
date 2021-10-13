@@ -1,0 +1,117 @@
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { ArticulosService } from '../services/articulos.service';
+import { Article, RespuestaTopHeadlines } from '../interfaces/interfaces';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AddicdosService {
+
+  //private cart: Article[] = [];
+  private carts: Article[] = [];
+  //private cartb: Article[] = [];
+
+  private cartcItemCount = new BehaviorSubject(0);
+
+  //private cartaditionCount = new BehaviorSubject(0);
+  private cartcditionCountdos = new BehaviorSubject(0);
+
+data: Article[] = [];
+
+constructor(private articulosService: ArticulosService,
+             private http: HttpClient,) { }
+
+
+
+getProducts() {
+return this.articulosService.getTopHeadlines();
+//  return this.data;
+  }
+
+
+getCartc() {
+return this.carts;
+}
+
+getCartItemCount() {
+return this.cartcditionCountdos;
+}
+
+getCartItemCountuno() {
+return this.cartcditionCountdos;
+}
+
+getCartItemCountdos() {
+return this.cartcditionCountdos;
+}
+
+addProduct(product) {
+let added = false;
+for (let p of this.carts) {
+if (p.nid === product.nid) {
+  p.amountc += 1;
+  console.log(product);
+  added = true;
+  break;
+}
+}
+if (!added) {
+product.amountc = 1;
+this.carts.push(product);
+console.log(product);
+}
+this.cartcditionCountdos.next(this.cartcditionCountdos.value + 1);
+}
+
+decreaseProduct(product) {
+
+for (let [index, p] of this.carts.entries()) {
+if (p.nid === product.nid) {
+  p.amountc -= 1;
+  if (p.amountc == 0) {
+    this.carts.splice(index, 1);
+  }
+}
+}
+this.cartcItemCount.next(this.cartcItemCount.value - 1);
+}
+
+removeProduct(product) {
+for (let [index, p] of this.carts.entries()) {
+if (p.nid === product.nid) {
+  this.cartcItemCount.next(this.cartcItemCount.value - p.amountc);
+  this.carts.splice(index, 1);
+}
+}
+}
+
+
+
+
+removeTotal(product) {
+
+
+for (let [index, p] of this.carts.entries()) {
+//  console.log(product[p]["nid"] );
+//  if (p.nid === product.nid) {
+    this.cartcItemCount.next(this.cartcItemCount.value - p.amountc);
+    this.carts.splice(index, 1);
+
+//  }
+}
+
+for (let [index, p] of this.carts.entries()) {
+//  console.log(product[p]["nid"] );
+//  if (p.nid === product.nid) {
+    this.cartcItemCount.next(this.cartcItemCount.value - p.amountc);
+
+    this.carts.splice(index);
+//  }
+}
+
+
+}
+
+}

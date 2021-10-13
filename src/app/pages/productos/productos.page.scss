@@ -1,0 +1,12 @@
+ion-content{
+    --background: url(/assets/images/fondoproducts.jpg) 0 0/100% 100% no-repeat;
+}
+
+ion-toolbar{
+    --background: url(/assets/images/toolbarproducts.png) 0 0/100% 100% no-repeat;
+    --border-color: #ffffff00;
+}
+.my-back-button {
+content: url(/assets/images/atras.png);
+width: 48px;
+}
