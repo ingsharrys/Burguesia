@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,8 +7,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.page.scss'],
 })
 export class RegisterPage implements OnInit {
-
-  constructor( private route: Router, ) { }
+  @ViewChild('video') videoRef: ElementRef;
+  videoElement: HTMLVideoElement | any;
+  constructor( 
+    private route: Router
+  ) { }
 
   ngOnInit() {
 
@@ -17,5 +20,7 @@ export class RegisterPage implements OnInit {
    }, 15500);
 
   }
+
+
 
 }
