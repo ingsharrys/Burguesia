@@ -324,9 +324,7 @@ hacerPedido(cart){
 
   const response = this.http.get<RespuestaTopHeadlines>(`https://laburguesianeiva.com/admin/api/get_user_pedidocode/?api_key=cda11rbycGLDVae49pzBCI0QuY5RsHFONkxMUvKwZ7SWXA8gfq&id=${result}&code=${todosproductos}&price=${preciosproductos}&buc=${cart['length']}&canrprod=${cantproductos}&adicionone=${adicionuno}&adicioncantone=${adicioncantuno}&adicionprecione=${adicionpreciouno}&adiciondos=${adiciondos}&adicioncantdos=${adicioncantdos}&adicionprecidos=${adicionpreciodos}&adiciontres=${adiciontres}&adicioncanttres=${adicioncanttres}&adicionprecitres=${adicionpreciotres}&adicioncuatro=${adicioncuatro}&adicioncantcuatro=${adicioncantcuatro}&adicionprecicuatro=${adicionpreciocuatro}&adicioncinco=${adicioncinco}&adicioncantcinco=${adicioncantcinco}&adicionprecicinco=${adicionpreciocinco}&adicionseis=${adicionseis}&adicioncantseis=${adicioncantseis}&adicionpreciseis=${adicionprecioseis}&adicionsiete=${adicionsiete}&adicioncantsiete=${adicioncantsiete}&adicionprecisiete=${adicionpreciosiete}&adicionocho=${adicionocho}&adicioncantocho=${adicioncantocho}&adicionpreciocho=${adicionprecioocho}&adicionnueve=${adicionnueve}&adicioncantnueve=${adicioncantnueve}&adicionprecinueve=${adicionprecionueve}&adiciondiez=${adiciondiez}&adicioncantdiez=${adicioncantdiez}&adicionprecidiez=${adicionpreciodiez}&mpago=Terjeta&detallespedi=${resulta}`)
        .subscribe( resp => {
-       console.log(resp);
-
-
+       console.log(resp)
 
       });
 
@@ -574,14 +572,13 @@ let observaf = this.storage.get('observemos').then((resulta) => {
 //  this.todosproducto = cart[i]["nid"];
 
 
-const response = this.http.get<RespuestaTopHeadlines>(`https://laburguesianeiva.com/admin/api/get_user_pedidocode/?api_key=cda11rbycGLDVae49pzBCI0QuY5RsHFONkxMUvKwZ7SWXA8gfq&id=${result}&code=${todosproductos}&price=${preciosproductos}&buc=${cart['length']}&canrprod=${cantproductos}&adicionone=${adicionuno}&adicioncantone=${adicioncantuno}&adicionprecione=${adicionpreciouno}&adiciondos=${adiciondos}&adicioncantdos=${adicioncantdos}&adicionprecidos=${adicionpreciodos}&adiciontres=${adiciontres}&adicioncanttres=${adicioncanttres}&adicionprecitres=${adicionpreciotres}&adicioncuatro=${adicioncuatro}&adicioncantcuatro=${adicioncantcuatro}&adicionprecicuatro=${adicionpreciocuatro}&adicioncinco=${adicioncinco}&adicioncantcinco=${adicioncantcinco}&adicionprecicinco=${adicionpreciocinco}&adicionseis=${adicionseis}&adicioncantseis=${adicioncantseis}&adicionpreciseis=${adicionprecioseis}&adicionsiete=${adicionsiete}&adicioncantsiete=${adicioncantsiete}&adicionprecisiete=${adicionpreciosiete}&adicionocho=${adicionocho}&adicioncantocho=${adicioncantocho}&adicionpreciocho=${adicionprecioocho}&adicionnueve=${adicionnueve}&adicioncantnueve=${adicioncantnueve}&adicionprecinueve=${adicionprecionueve}&adiciondiez=${adiciondiez}&adicioncantdiez=${adicioncantdiez}&adicionprecidiez=${adicionpreciodiez}&mpago=Efectivo&detallespedi=${resulta}`)
-     .subscribe( resp => {
-     console.log(resp);
+     const response = this.http.get<RespuestaTopHeadlines>(`https://laburguesianeiva.com/admin/api/get_user_pedidocode/?api_key=cda11rbycGLDVae49pzBCI0QuY5RsHFONkxMUvKwZ7SWXA8gfq&id=${result}&code=${todosproductos}&price=${preciosproductos}&buc=${cart['length']}&canrprod=${cantproductos}&adicionone=${adicionuno}&adicioncantone=${adicioncantuno}&adicionprecione=${adicionpreciouno}&adiciondos=${adiciondos}&adicioncantdos=${adicioncantdos}&adicionprecidos=${adicionpreciodos}&adiciontres=${adiciontres}&adicioncanttres=${adicioncanttres}&adicionprecitres=${adicionpreciotres}&adicioncuatro=${adicioncuatro}&adicioncantcuatro=${adicioncantcuatro}&adicionprecicuatro=${adicionpreciocuatro}&adicioncinco=${adicioncinco}&adicioncantcinco=${adicioncantcinco}&adicionprecicinco=${adicionpreciocinco}&adicionseis=${adicionseis}&adicioncantseis=${adicioncantseis}&adicionpreciseis=${adicionprecioseis}&adicionsiete=${adicionsiete}&adicioncantsiete=${adicioncantsiete}&adicionprecisiete=${adicionpreciosiete}&adicionocho=${adicionocho}&adicioncantocho=${adicioncantocho}&adicionpreciocho=${adicionprecioocho}&adicionnueve=${adicionnueve}&adicioncantnueve=${adicioncantnueve}&adicionprecinueve=${adicionprecionueve}&adiciondiez=${adiciondiez}&adicioncantdiez=${adicioncantdiez}&adicionprecidiez=${adicionpreciodiez}&mpago=Efectivo&detallespedi=${resulta}`)
+          .subscribe( resp => {
+               console.log(resp);
 
+          }, error => console.log(error));
 
-    });
-
-});
+     });
 
 
  });

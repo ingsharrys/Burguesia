@@ -33,22 +33,22 @@ console.log(this.cart);
     console.log('efectivo');
     console.log(this.cart);
 
-  //  console.log(this.pedidoCartapp);
-  //  let entrega = this.pedidoCartapp;
-//recuperar    this.articulosService.hacerPedido(entrega, this.cart);
+      //  console.log(this.pedidoCartapp);
+      //  let entrega = this.pedidoCartapp;
+    //recuperar    this.articulosService.hacerPedido(entrega, this.cart);
     this.articulosService.hacerPedidocode(this.cart);
 
-  this.presentAlertorden();
+    this.presentAlertorden();
 
-    }
+  }
 
-    addToTarjeta(){
-      console.log('TARJETA');
-      this.articulosService.hacerPedido(this.cart);
+  addToTarjeta(){
+    console.log('TARJETA');
+    this.articulosService.hacerPedido(this.cart);
 
-      
-      //  this.cartService.decreaseProduct(product);
-      }
+    
+    //  this.cartService.decreaseProduct(product);
+  }
 
 
 
