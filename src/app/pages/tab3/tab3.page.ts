@@ -25,28 +25,35 @@ export class Tab3Page implements OnInit{
 
   ngOnInit(){
 
-this.cart = this.cartService.getCart();
-console.log(this.cart);
+    this.cart = this.cartService.getCart();
+    console.log(this.cart);
   }
 
-  addToEfectivo(){
-    console.log('efectivo');
+  private async checkout(paymentMethod = 'Efectivo'){
+    console.log(paymentMethod);
     console.log(this.cart);
 
       //  console.log(this.pedidoCartapp);
       //  let entrega = this.pedidoCartapp;
     //recuperar    this.articulosService.hacerPedido(entrega, this.cart);
-    this.articulosService.hacerPedidocode(this.cart);
+    try {
+      const order = await this.articulosService.hacerPedidocode(this.cart, paymentMethod);
+      console.log(order);
+      this.route.navigateByUrl('/tab2');
+      this.presentAlertorden();
+    }catch(err) {
+      console.warn('error realizando el pedido ', err)
+    };
 
-    this.presentAlertorden();
 
   }
 
-  addToTarjeta(){
-    console.log('TARJETA');
-    this.articulosService.hacerPedido(this.cart);
+  addToEfectivo () {
+    this.checkout('Efectivo')
+  }
 
-    
+  addToTarjeta(){
+    this.checkout('Tarjeta');
     //  this.cartService.decreaseProduct(product);
   }
 
@@ -60,8 +67,8 @@ console.log(this.cart);
            buttons: ['OK']
          });
 
-         await alert.present();
-
+        await alert.present();
+        await alert.onDidDismiss();
         window.location.reload();
        }
 

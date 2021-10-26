@@ -91,6 +91,7 @@ getCommentHeadlines( id:string ){
    });
 }
 
+
 hacerPedido(cart){
 
 
@@ -339,251 +340,277 @@ this.router.navigateByUrl('/tab2');
 
 
 
-hacerPedidocode(cart){
+async hacerPedidocode(cart, mpago = 'Efectivo'):Promise<any>{
 
 
+     console.log(cart[0]['news_title']);
+     console.log(cart);
+     console.log(cart['length']);
+     //  let texto: string = JSON.stringify(cart);
+     //  console.log(texto);
 
 
-console.log(cart[0]['news_title']);
-console.log(cart);
-console.log(cart['length']);
-//  let texto: string = JSON.stringify(cart);
-//  console.log(texto);
+     const result = await this.storage.get('token')
+     const resulta = await this.storage.get('observemos')
+     console.log(result);
+
+     let todosproductos = [];
+     console.log(todosproductos);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          todosproductos.push(cart[i]['news_title']);
+     }
+
+     let preciosproductos = [];
+     console.log(preciosproductos);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          preciosproductos.push(cart[i]['tienda_price']);
+     }
+
+     let cantproductos = [];
+     console.log(cantproductos);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          cantproductos.push(cart[i]['amount']);
+     }
+     //adicional 1
+     let adicionuno = [];
+     console.log(adicionuno);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionuno.push(cart[i]['adicion0']);
+     }
+
+     let adicioncantuno = [];
+     console.log(adicioncantuno);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncantuno.push(cart[i]['amounta']);
+     }
+
+     let adicionpreciouno = [];
+     console.log(adicionpreciouno);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionpreciouno.push(cart[i]['adicionprice0']);
+     }
+
+     //adicional 2
+     let adiciondos = [];
+     console.log(adiciondos);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adiciondos.push(cart[i]['adicion1']);
+     }
+
+     let adicioncantdos = [];
+     console.log(adicioncantdos);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncantdos.push(cart[i]['amountb']);
+     }
+
+     let adicionpreciodos = [];
+     console.log(adicionpreciodos);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionpreciodos.push(cart[i]['adicionprice1']);
+     }
 
 
-let idusers = this.storage.get('token').then((result) => {
-let observaf = this.storage.get('observemos').then((resulta) => {
-  console.log(result);
+     //adicional 3
+     let adiciontres = [];
+     console.log(adiciontres);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adiciontres.push(cart[i]['adicion2']);
+     }
 
-  let todosproductos = [];
-  console.log(todosproductos);
-  for (let i = 0; i <= cart['length']-1; i++) {
-       todosproductos.push(cart[i]['news_title']);
-  }
+     let adicioncanttres = [];
+     console.log(adicioncanttres);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncanttres.push(cart[i]['amountc']);
+     }
 
-  let preciosproductos = [];
-  console.log(preciosproductos);
-  for (let i = 0; i <= cart['length']-1; i++) {
-       preciosproductos.push(cart[i]['tienda_price']);
-  }
-
-  let cantproductos = [];
-  console.log(cantproductos);
-  for (let i = 0; i <= cart['length']-1; i++) {
-       cantproductos.push(cart[i]['amount']);
-  }
-//adicional 1
-  let adicionuno = [];
-  console.log(adicionuno);
-  for (let i = 0; i <= cart['length']-1; i++) {
-       adicionuno.push(cart[i]['adicion0']);
-  }
-
-  let adicioncantuno = [];
-  console.log(adicioncantuno);
-  for (let i = 0; i <= cart['length']-1; i++) {
-       adicioncantuno.push(cart[i]['amounta']);
-  }
-
-  let adicionpreciouno = [];
-  console.log(adicionpreciouno);
-  for (let i = 0; i <= cart['length']-1; i++) {
-       adicionpreciouno.push(cart[i]['adicionprice0']);
-  }
-  //adicional 2
-    let adiciondos = [];
-    console.log(adiciondos);
-    for (let i = 0; i <= cart['length']-1; i++) {
-         adiciondos.push(cart[i]['adicion1']);
-    }
-
-    let adicioncantdos = [];
-    console.log(adicioncantdos);
-    for (let i = 0; i <= cart['length']-1; i++) {
-         adicioncantdos.push(cart[i]['amountb']);
-    }
-
-    let adicionpreciodos = [];
-    console.log(adicionpreciodos);
-    for (let i = 0; i <= cart['length']-1; i++) {
-         adicionpreciodos.push(cart[i]['adicionprice1']);
-    }
+     let adicionpreciotres = [];
+     console.log(adicionpreciotres);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionpreciotres.push(cart[i]['adicionprice2']);
+     }
 
 
-    //adicional 3
-      let adiciontres = [];
-      console.log(adiciontres);
-      for (let i = 0; i <= cart['length']-1; i++) {
-           adiciontres.push(cart[i]['adicion2']);
-      }
+     //adicional 4
+     let adicioncuatro = [];
+     console.log(adicioncuatro);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncuatro.push(cart[i]['adicion3']);
+     }
 
-      let adicioncanttres = [];
-      console.log(adicioncanttres);
-      for (let i = 0; i <= cart['length']-1; i++) {
-           adicioncanttres.push(cart[i]['amountc']);
-      }
+     let adicioncantcuatro = [];
+     console.log(adicioncantcuatro);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncantcuatro.push(cart[i]['amountd']);
+     }
 
-      let adicionpreciotres = [];
-      console.log(adicionpreciotres);
-      for (let i = 0; i <= cart['length']-1; i++) {
-           adicionpreciotres.push(cart[i]['adicionprice2']);
-      }
-
-
-      //adicional 4
-        let adicioncuatro = [];
-        console.log(adicioncuatro);
-        for (let i = 0; i <= cart['length']-1; i++) {
-             adicioncuatro.push(cart[i]['adicion3']);
-        }
-
-        let adicioncantcuatro = [];
-        console.log(adicioncantcuatro);
-        for (let i = 0; i <= cart['length']-1; i++) {
-             adicioncantcuatro.push(cart[i]['amountd']);
-        }
-
-        let adicionpreciocuatro = [];
-        console.log(adicionpreciocuatro);
-        for (let i = 0; i <= cart['length']-1; i++) {
-             adicionpreciocuatro.push(cart[i]['adicionprice3']);
-        }
+     let adicionpreciocuatro = [];
+     console.log(adicionpreciocuatro);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionpreciocuatro.push(cart[i]['adicionprice3']);
+     }
 
 
-        //adicional 5
-          let adicioncinco = [];
-          console.log(adicioncinco);
-          for (let i = 0; i <= cart['length']-1; i++) {
-               adicioncinco.push(cart[i]['adicion4']);
-          }
+     //adicional 5
+     let adicioncinco = [];
+     console.log(adicioncinco);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncinco.push(cart[i]['adicion4']);
+     }
 
-          let adicioncantcinco = [];
-          console.log(adicioncantcinco);
-          for (let i = 0; i <= cart['length']-1; i++) {
-               adicioncantcinco.push(cart[i]['amounte']);
-          }
+     let adicioncantcinco = [];
+     console.log(adicioncantcinco);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncantcinco.push(cart[i]['amounte']);
+     }
 
-          let adicionpreciocinco = [];
-          console.log(adicionpreciocinco);
-          for (let i = 0; i <= cart['length']-1; i++) {
-               adicionpreciocinco.push(cart[i]['adicionprice4']);
-          }
-
-
-          //adicional 6
-            let adicionseis = [];
-            console.log(adicionseis);
-            for (let i = 0; i <= cart['length']-1; i++) {
-                 adicionseis.push(cart[i]['adicion5']);
-            }
-
-            let adicioncantseis = [];
-            console.log(adicioncantseis);
-            for (let i = 0; i <= cart['length']-1; i++) {
-                 adicioncantseis.push(cart[i]['amountf']);
-            }
-
-            let adicionprecioseis = [];
-            console.log(adicionprecioseis);
-            for (let i = 0; i <= cart['length']-1; i++) {
-                 adicionprecioseis.push(cart[i]['adicionprice5']);
-            }
+     let adicionpreciocinco = [];
+     console.log(adicionpreciocinco);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionpreciocinco.push(cart[i]['adicionprice4']);
+     }
 
 
-            //adicional 7
-              let adicionsiete = [];
-              console.log(adicionsiete);
-              for (let i = 0; i <= cart['length']-1; i++) {
-                   adicionsiete.push(cart[i]['adicion6']);
-              }
+     //adicional 6
+     let adicionseis = [];
+     console.log(adicionseis);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionseis.push(cart[i]['adicion5']);
+     }
 
-              let adicioncantsiete = [];
-              console.log(adicioncantsiete);
-              for (let i = 0; i <= cart['length']-1; i++) {
-                   adicioncantsiete.push(cart[i]['amountg']);
-              }
+     let adicioncantseis = [];
+     console.log(adicioncantseis);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncantseis.push(cart[i]['amountf']);
+     }
 
-              let adicionpreciosiete = [];
-              console.log(adicionpreciosiete);
-              for (let i = 0; i <= cart['length']-1; i++) {
-                   adicionpreciosiete.push(cart[i]['adicionprice6']);
-              }
-
-              //adicional 8
-                let adicionocho = [];
-                console.log(adicionocho);
-                for (let i = 0; i <= cart['length']-1; i++) {
-                     adicionocho.push(cart[i]['adicion7']);
-                }
-
-                let adicioncantocho = [];
-                console.log(adicioncantocho);
-                for (let i = 0; i <= cart['length']-1; i++) {
-                     adicioncantocho.push(cart[i]['amounth']);
-                }
-
-                let adicionprecioocho = [];
-                console.log(adicionprecioocho);
-                for (let i = 0; i <= cart['length']-1; i++) {
-                     adicionprecioocho.push(cart[i]['adicionprice7']);
-                }
+     let adicionprecioseis = [];
+     console.log(adicionprecioseis);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionprecioseis.push(cart[i]['adicionprice5']);
+     }
 
 
-                //adicional 9
-                  let adicionnueve = [];
-                  console.log(adicionnueve);
-                  for (let i = 0; i <= cart['length']-1; i++) {
-                       adicionnueve.push(cart[i]['adicion8']);
-                  }
+     //adicional 7
+     let adicionsiete = [];
+     console.log(adicionsiete);
+     for (let i = 0; i <= cart['length']-1; i++) {
+     adicionsiete.push(cart[i]['adicion6']);
+     }
 
-                  let adicioncantnueve = [];
-                  console.log(adicioncantnueve);
-                  for (let i = 0; i <= cart['length']-1; i++) {
-                       adicioncantnueve.push(cart[i]['amounti']);
-                  }
+     let adicioncantsiete = [];
+     console.log(adicioncantsiete);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncantsiete.push(cart[i]['amountg']);
+     }
 
-                  let adicionprecionueve = [];
-                  console.log(adicionprecionueve);
-                  for (let i = 0; i <= cart['length']-1; i++) {
-                       adicionprecionueve.push(cart[i]['adicionprice8']);
-                  }
+     let adicionpreciosiete = [];
+     console.log(adicionpreciosiete);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionpreciosiete.push(cart[i]['adicionprice6']);
+     }
 
+     //adicional 8
+     let adicionocho = [];
+     console.log(adicionocho);
+     for (let i = 0; i <= cart['length']-1; i++) {
+     adicionocho.push(cart[i]['adicion7']);
+     }
 
-                  //adicional 10
-                    let adiciondiez = [];
-                    console.log(adiciondiez);
-                    for (let i = 0; i <= cart['length']-1; i++) {
-                         adiciondiez.push(cart[i]['adicion9']);
-                    }
+     let adicioncantocho = [];
+     console.log(adicioncantocho);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncantocho.push(cart[i]['amounth']);
+     }
 
-                    let adicioncantdiez = [];
-                    console.log(adicioncantdiez);
-                    for (let i = 0; i <= cart['length']-1; i++) {
-                         adicioncantdiez.push(cart[i]['amountj']);
-                    }
-
-                    let adicionpreciodiez = [];
-                    console.log(adicionpreciodiez);
-                    for (let i = 0; i <= cart['length']-1; i++) {
-                         adicionpreciodiez.push(cart[i]['adicionprice9']);
-                    }
-
-
-//  this.todosproducto = cart[i]["nid"];
+     let adicionprecioocho = [];
+     console.log(adicionprecioocho);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionprecioocho.push(cart[i]['adicionprice7']);
+     }
 
 
-     const response = this.http.get<RespuestaTopHeadlines>(`https://laburguesianeiva.com/admin/api/get_user_pedidocode/?api_key=cda11rbycGLDVae49pzBCI0QuY5RsHFONkxMUvKwZ7SWXA8gfq&id=${result}&code=${todosproductos}&price=${preciosproductos}&buc=${cart['length']}&canrprod=${cantproductos}&adicionone=${adicionuno}&adicioncantone=${adicioncantuno}&adicionprecione=${adicionpreciouno}&adiciondos=${adiciondos}&adicioncantdos=${adicioncantdos}&adicionprecidos=${adicionpreciodos}&adiciontres=${adiciontres}&adicioncanttres=${adicioncanttres}&adicionprecitres=${adicionpreciotres}&adicioncuatro=${adicioncuatro}&adicioncantcuatro=${adicioncantcuatro}&adicionprecicuatro=${adicionpreciocuatro}&adicioncinco=${adicioncinco}&adicioncantcinco=${adicioncantcinco}&adicionprecicinco=${adicionpreciocinco}&adicionseis=${adicionseis}&adicioncantseis=${adicioncantseis}&adicionpreciseis=${adicionprecioseis}&adicionsiete=${adicionsiete}&adicioncantsiete=${adicioncantsiete}&adicionprecisiete=${adicionpreciosiete}&adicionocho=${adicionocho}&adicioncantocho=${adicioncantocho}&adicionpreciocho=${adicionprecioocho}&adicionnueve=${adicionnueve}&adicioncantnueve=${adicioncantnueve}&adicionprecinueve=${adicionprecionueve}&adiciondiez=${adiciondiez}&adicioncantdiez=${adicioncantdiez}&adicionprecidiez=${adicionpreciodiez}&mpago=Efectivo&detallespedi=${resulta}`)
-          .subscribe( resp => {
-               console.log(resp);
+     //adicional 9
+     let adicionnueve = [];
+     console.log(adicionnueve);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionnueve.push(cart[i]['adicion8']);
+     }
 
-          }, error => console.log(error));
+     let adicioncantnueve = [];
+     console.log(adicioncantnueve);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncantnueve.push(cart[i]['amounti']);
+     }
 
-     });
+     let adicionprecionueve = [];
+     console.log(adicionprecionueve);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionprecionueve.push(cart[i]['adicionprice8']);
+     }
 
 
- });
+     //adicional 10
+     let adiciondiez = [];
+     console.log(adiciondiez);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adiciondiez.push(cart[i]['adicion9']);
+     }
 
-this.router.navigateByUrl('/tab2');
+     let adicioncantdiez = [];
+     console.log(adicioncantdiez);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicioncantdiez.push(cart[i]['amountj']);
+     }
+
+     let adicionpreciodiez = [];
+     console.log(adicionpreciodiez);
+     for (let i = 0; i <= cart['length']-1; i++) {
+          adicionpreciodiez.push(cart[i]['adicionprice9']);
+     }
+
+     const bodyRequest = {
+          code: todosproductos,
+          price: preciosproductos,
+          buc: cart['length'],
+          canrprod: cantproductos,
+          adicionone: adicionuno,
+          adicioncantone: adicioncantuno,
+          adicionprecione: adicionpreciouno,
+          adiciondos: adiciondos,
+          adicioncantdos:adicioncantdos,
+          adicionprecidos: adicionpreciodos,
+          adiciontres:adiciontres,
+          adicioncanttres:adicioncanttres,
+          adicionprecitres: adicionpreciotres,
+          adicioncuatro:adicioncuatro,
+          adicioncantcuatro: adicioncantcuatro,
+          adicionprecicuatro: adicionpreciocuatro,
+          adicioncinco: adicioncinco,
+          adicioncantcinco: adicioncantcinco,
+          adicionprecicinco: adicionpreciocinco,
+          adicionseis: adicionseis,
+          adicioncantseis:adicioncantseis,
+          adicionpreciseis:adicionprecioseis,
+          adicionsiete: adicionsiete,
+          adicioncantsiete: adicioncantsiete,
+          adicionprecisiete: adicionpreciosiete,
+          adicionocho: adicionocho,
+          adicioncantocho:adicioncantocho,
+          adicionpreciocho: adicionprecioocho,
+          adicionnueve: adicionnueve,
+          adicioncantnueve: adicioncantnueve,
+          adicionprecinueve: adicionprecionueve,
+          adiciondiez: adiciondiez,
+          adicioncantdiez: adicioncantdiez,
+          adicionprecidiez: adicionpreciodiez,
+          mpago,
+          detallespedi: resulta,
+          id: result,
+     }
+
+     return this.http.post<RespuestaTopHeadlines>(`
+          https://laburguesianeiva.com/admin/api/get_user_pedidocode_test/?api_key=cda11rbycGLDVae49pzBCI0QuY5RsHFONkxMUvKwZ7SWXA8gfq`, bodyRequest, {
+          }).toPromise();
 
 }
 
