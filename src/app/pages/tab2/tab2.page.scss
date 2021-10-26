@@ -3,5 +3,11 @@ ion-content{
 }
 ion-toolbar{
     --background: url(/assets/images/toolbar.jpg) 0 0/100% 100% no-repeat;
-    
+}
+ion-footer {
+    background: url(/assets/images/headcarrito.jpg) 100% 100% no-repeat;
+}
+.footer {
+    background: url(/assets/images/fondonegrohomedos.png) 0 0/100% 100% no-repeat;
+    width: 100%;
 }

@@ -17,7 +17,7 @@ export class RegisterPage implements OnInit {
 
   setTimeout(() => {
      this.route.navigateByUrl('/tab2');
-   }, 15500);
+   }, 17500);
 
   }
 
