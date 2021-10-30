@@ -30,15 +30,9 @@ export class Tab3Page implements OnInit{
   }
 
   private async checkout(paymentMethod = 'Efectivo'){
-    console.log(paymentMethod);
-    console.log(this.cart);
-
-      //  console.log(this.pedidoCartapp);
-      //  let entrega = this.pedidoCartapp;
-    //recuperar    this.articulosService.hacerPedido(entrega, this.cart);
     try {
       const order = await this.articulosService.hacerPedidocode(this.cart, paymentMethod);
-      console.log(order);
+      this.cartService.resetShoppingCart();
       this.route.navigateByUrl('/tab2');
       this.presentAlertorden();
     }catch(err) {
@@ -69,7 +63,6 @@ export class Tab3Page implements OnInit{
 
         await alert.present();
         await alert.onDidDismiss();
-        window.location.reload();
        }
 
 

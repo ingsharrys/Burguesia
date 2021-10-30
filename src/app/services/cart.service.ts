@@ -78,7 +78,6 @@ let added = false;
 for (let p of this.cart) {
   if (p.nid === product.nid) {
     p.amount += 1;
-    
     console.log(product);
     added = true;
     break;
@@ -583,5 +582,30 @@ removeTotal(product) {
 
 
 }
+
+  resetShoppingCart () {
+    this.cart = [];
+    this.carts = [];
+    this.cartb = [];
+    this.cartc = [];
+    this.cartd = [];
+    this.carte = [];
+    this.cartf = [];
+    this.cartg = [];
+    this.carth = [];
+    this.carti = [];
+    this.cartj = [];
+    this.cartItemCount.next(0);
+    this.cartItemCounts.next(0);
+    this.cartItemCountsdos.next(0);
+    this.cartItemCountstres.next(0);
+    this.cartItemCountscuatro.next(0);
+    this.cartItemCountscinco.next(0);
+    this.cartItemCountsseis.next(0);
+    this.cartItemCountssiete.next(0);
+    this.cartItemCountsocho.next(0);
+    this.cartItemCountsnueve.next(0);
+    this.cartItemCountsdies.next(0);
+  }
 
 }
